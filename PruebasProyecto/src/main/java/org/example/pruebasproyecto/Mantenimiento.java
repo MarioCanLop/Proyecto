@@ -116,7 +116,6 @@ public class Mantenimiento {
 
     }
 
-
     public static void borrar(Connection conexion, Artistas artistas){
 
         String querry = "Delete from artistas Where artistaid ='" + artistas.getArtistaid() + "'";
@@ -135,20 +134,20 @@ public class Mantenimiento {
 
     }
 
-    public static void modificar (Connection conexion, Artistas artistas, String nomre_ant){
+    public static void modificar (Connection conexion, Artistas artistas, int id){
         String querry;
         System.out.println(artistas);
         if (artistas.getBiografia() == null) {
             querry = "Update artistas Set nombre = '" + artistas.getNombre()
                     + "', telefono = '" + artistas.getEmail() +
                     "', email = '" + artistas.getTelefono() +
-                    "' Where nombre = '" + nomre_ant + "'";
+                    "' Where artistaid = '" + id + "'";
         }else{
             querry = "Update artistas Set nombre = '" + artistas.getNombre()
                     + "', biografia = '" + artistas.getBiografia()
                     + "', telefono = '" + artistas.getEmail() +
                     "', email = '" + artistas.getTelefono() +
-                    "' Where nombre = '" + nomre_ant + "'";
+                    "' Where artistaid = '" + id + "'";
         }
         Statement stmt;
 

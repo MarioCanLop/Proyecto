@@ -43,7 +43,7 @@ public class HelloController {
     private TableView<Artistas> tablaArtistas;
 
     Connection conexion;
-    String nombre_ant;
+    int id;
 
     @FXML
     public void initialize(){
@@ -66,7 +66,7 @@ public class HelloController {
         guardarButton.setDisable(false);
 
         Artistas artista_seleccionado = tablaArtistas.getSelectionModel().getSelectedItem();
-        nombre_ant = artista_seleccionado.getNombre();
+        id = artista_seleccionado.getArtistaid();
         if (artista_seleccionado != null){
             if (artista_seleccionado.getBiografia() == null) {
                 nombreTextField.setText(String.valueOf(artista_seleccionado.getNombre()));
@@ -116,9 +116,9 @@ public class HelloController {
         String email = emailTextField.getText();
 
         if (biografia.isEmpty()){
-            Mantenimiento.modificar(conexion, new Artistas(nombre,email,telefono),nombre_ant);
+            Mantenimiento.modificar(conexion, new Artistas(nombre,email,telefono),id);
         }else {
-            Mantenimiento.modificar(conexion, new Artistas(nombre, biografia, email, telefono), nombre_ant );
+            Mantenimiento.modificar(conexion, new Artistas(nombre, biografia, email, telefono), id );
         }
 
 
